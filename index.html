@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine 💖</title>
+  <title>My Valentine 💖</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: pink;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       font-family: 'Arial', sans-serif;
     }
 
     .container {
       text-align: center;
+      z-index: 2;
     }
 
     h1 {
@@ -39,7 +41,7 @@
     }
 
     #noBtn {
-      background-color: #ffffff;
+      background-color: white;
       color: #ff4d88;
       position: absolute;
     }
@@ -48,15 +50,35 @@
       display: none;
     }
 
+    .result h2 {
+      color: #b30059;
+      font-size: 2.5rem;
+    }
+
     .result img {
       width: 300px;
       border-radius: 20px;
       margin-top: 20px;
     }
 
-    .result h2 {
-      color: #b30059;
-      margin-top: 20px;
+    /* ❤️ Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -70,7 +92,8 @@
 
   <div class="container result" id="result">
     <h2>I am blessed to have you, love 💞</h2>
-<img src="love.jpg" alt="My Love">  </div>
+    <img src="https://i.imgur.com/8Km9tLL.jpg" alt="Love">
+  </div>
 
   <script>
     const noBtn = document.getElementById("noBtn");
@@ -89,6 +112,22 @@
       document.getElementById("question").style.display = "none";
       document.getElementById("result").style.display = "block";
     }
+
+    // ❤️ Create floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
   </script>
 
 </body>
