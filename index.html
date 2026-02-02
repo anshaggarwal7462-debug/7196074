@@ -2,27 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Valentine 💖</title>
+  <title>Valentine 💖</title>
+
+  <!-- Cute Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       height: 100vh;
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
+      background: #ffd6e8;
+      font-family: Arial, sans-serif;
     }
 
     .container {
       text-align: center;
-      z-index: 2;
+      position: relative;
     }
+
+    /* 💖 Name styling */
+    .name {
+      font-family: 'Pacifico', cursive;
+      font-size: 4rem;
+      color: #ff2f7d;
+      margin-bottom: 20px;
+    }
+
+    .heart-frame {
+      display: inline-block;
+      padding: 40px 60px;
+      border: 6px solid #ff4d88;
+      border-radius: 30px;
+      position: relative;
+      background: #fff0f6;
+    }
+
+    /* ❤️ Big hearts around frame */
+    .heart {
+      position: absolute;
+      font-size: 42px;
+    }
+
+    .heart.top-left { top: -30px; left: -30px; }
+    .heart.top-right { top: -30px; right: -30px; }
+    .heart.bottom-left { bottom: -30px; left: -30px; }
+    .heart.bottom-right { bottom: -30px; right: -30px; }
 
     h1 {
       color: #b30059;
-      font-size: 3rem;
+      font-size: 2.6rem;
       margin-bottom: 30px;
     }
 
@@ -51,8 +82,9 @@
     }
 
     .result h2 {
+      font-family: 'Pacifico', cursive;
       color: #b30059;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
     }
 
     .result img {
@@ -60,34 +92,26 @@
       border-radius: 20px;
       margin-top: 20px;
     }
-
-    /* ❤️ Floating hearts */
-    .heart {
-      position: absolute;
-      color: #ff4d88;
-      font-size: 20px;
-      animation: float 6s linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
 
   <div class="container" id="question">
-    <h1>Khushi will you be my Valentine? 💘</h1>
-    <button id="yesBtn" onclick="showLove()">Yes 💖</button>
-    <button id="noBtn">No 😜</button>
+
+    <!-- 💕 Name -->
+    <div class="name">Khushi 💖</div>
+
+    <div class="heart-frame">
+      <span class="heart top-left">❤️</span>
+      <span class="heart top-right">❤️</span>
+      <span class="heart bottom-left">❤️</span>
+      <span class="heart bottom-right">❤️</span>
+
+      <h1>Will you be my Valentine? 💘</h1>
+
+      <button id="yesBtn" onclick="showLove()">Yes 💖</button>
+      <button id="noBtn">No 😜</button>
+    </div>
   </div>
 
   <div class="container result" id="result">
@@ -111,22 +135,6 @@
       document.getElementById("question").style.display = "none";
       document.getElementById("result").style.display = "block";
     }
-
-    // ❤️ Create floating hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-    }
-
-    setInterval(createHeart, 300);
   </script>
 
 </body>
